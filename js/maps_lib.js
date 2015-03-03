@@ -74,12 +74,20 @@
     //-----custom functions-----
     //---MODIFY column header and values below to match your Google Fusion Table AND index.html
     //-- TEXTUAL OPTION to display legend and filter by non-numerical data in your table
-    var type_column = "'type'"; // -- note use of single & double quotes for two-word column header
-    var tempWhereClause = [];
-    if ( $("#cbType1").is(':checked')) tempWhereClause.push("Handicap");
-    if ( $("#cbType2").is(':checked')) tempWhereClause.push("Unisex");
-    if ( $("#cbType3").is(':checked')) tempWhereClause.push("Pissoir");
-    self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
+    //var type_column = "'type'"; // -- note use of single & double quotes for two-word column header
+    //var tempWhereClause = [];
+    //if ( $("#cbType1").is(':checked')) tempWhereClause.push("Handicap");
+    //if ( $("#cbType2").is(':checked')) tempWhereClause.push("Unisex");
+    //if ( $("#cbType3").is(':checked')) tempWhereClause.push("Pissoir");
+    //self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
+    
+    // -- NUMERICAL OPTION
+    var type_column = "'typenum'";
+    var searchType = type_column + " IN (-1,";
+    if ( $("#cbType1").is(':checked')) searchType += "1,";
+    if ( $("#cbType2").is(':checked')) searchType += "2,";
+    if ( $("#cbType3").is(':checked')) searchType += "3,";
+    self.whereClause += " AND " + searchType.slice(0, searchType.length - 1) + ")";
     
     //-----end of custom functions-----
 
