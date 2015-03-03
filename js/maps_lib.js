@@ -164,7 +164,7 @@
     //self.whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
     
     // -- NUMERICAL OPTION
-    var type_column = "'typenum'";
+    var type_column = "typenum";
     var searchType = type_column + " IN (-1,";
     if ( $("#cbType1").is(':checked')) searchType += "1,";
     if ( $("#cbType2").is(':checked')) searchType += "2,";
